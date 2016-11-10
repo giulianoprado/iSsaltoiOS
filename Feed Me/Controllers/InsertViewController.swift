@@ -13,7 +13,12 @@ protocol InsertViewControllerDelegate: class {
 }
 
 class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    @IBOutlet weak var descricao: UITextView!
+  
+  let possibleTypesDictionary = ["issalto_assalto":"Assalto", "issalto_roubo":"Roubo", "issalto_carro":"Roubo de carro", "issalto_estupro":"Estupro", "issalto_suspeito":"Suspeito"]
+  
+  
+  @IBOutlet weak var descricao: UITextField!
+  @IBOutlet weak var titulo: UITextField!
   
   weak var delegateCreateNewOcurrence: InsertViewControllerDelegate!
   
@@ -21,7 +26,6 @@ class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerView
   var tipoSelecionado = "isaslto_assalto"
   
   var tipos = ["issalto_assalto", "issalto_carro", "issalto_estupro", "issalto_roubo", "issalto_suspeito"]
-  var tiposNome = ["Assalto", "Roubo", "Estupro", "Roubo de carro", "Suspeito"]
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,11 +38,11 @@ class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerView
   }
   
   func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return tiposNome[row]
+    return possibleTypesDictionary["\(tipos[row])"];
   }
   
   @IBAction func salvarClick(sender: AnyObject) {
-    delegateCreateNewOcurrence?.novaOcorrencia(self, type: tipoSelecionado, title: "(20/10) Teste", description: descricao.text)
+    delegateCreateNewOcurrence?.novaOcorrencia(self, type: tipoSelecionado, title: "(11/11) \(titulo.text!)", description: descricao.text!)
   }
   
   @IBAction func backClick(sender: AnyObject) {

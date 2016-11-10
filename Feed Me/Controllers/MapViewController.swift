@@ -58,6 +58,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   }
   override func viewDidLoad() {
     super.viewDidLoad()
+    mapView.myLocationEnabled = true
+    mapView.settings.myLocationButton = true
     mapView.delegate = self
     
     
@@ -143,7 +145,7 @@ extension MapViewController: TypesTableViewControllerDelegate {
 extension MapViewController: InsertViewControllerDelegate {
   func novaOcorrencia(controller: InsertViewController, type: String, title: String, description: String) {
     print("AAAA")
-    createMarker(type, coordinate: lastSelectedPos, title: "(21/10) Teste", description: "Descrição: \(description)");
+    createMarker(type, coordinate: lastSelectedPos, title: title, description: "Descrição: \(description)");
     print("Pimba")
     dismissViewControllerAnimated(true, completion: nil)
   }
