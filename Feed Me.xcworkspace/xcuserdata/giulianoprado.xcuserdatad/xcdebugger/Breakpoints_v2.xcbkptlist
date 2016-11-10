@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Feed Me/Controllers/MapViewController.swift"
+            timestampString = "498686228.106794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "MapViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for iSsalto.TypesTableViewControllerDelegate.typesController &lt;A where A: iSsalto.TypesTableViewControllerDelegate&gt; (A)(iSsalto.TypesTableViewController, didSelectTypes : Swift.Array&lt;Swift.String&gt;) -&gt; () in conformance iSsalto.MapViewController : iSsalto.TypesTableViewControllerDelegate in iSsalto"
+                  moduleName = "iSsalto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giulianoprado/Meus%20aplicativos/CD/Feed%20Me%20Starter/Feed%20Me/Controllers/MapViewController.swift"
+                  timestampString = "498682980.693481"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "dynamic iSsalto.MapViewController.typesController (iSsalto.MapViewController)(iSsalto.TypesTableViewController, didSelectTypes : Swift.Array&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "iSsalto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giulianoprado/Meus%20aplicativos/CD/Feed%20Me%20Starter/Feed%20Me/Controllers/MapViewController.swift"
+                  timestampString = "498682980.693747"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Feed Me/Controllers/MapViewController.swift"
+            timestampString = "498686228.106794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Feed Me/Controllers/MapViewController.swift"
+            timestampString = "498686228.106794"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "viewDidAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
