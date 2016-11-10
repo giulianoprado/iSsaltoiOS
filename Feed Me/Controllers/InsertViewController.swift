@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol CreateNewOcurrence: class {
+protocol InsertViewControllerDelegate: class {
   func novaOcorrencia(controller: InsertViewController, type: String, title: String, description: String)
 }
 
 class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var descricao: UITextView!
   
-  weak var delegateCreateNewOcurrence: CreateNewOcurrence!
+  weak var delegateCreateNewOcurrence: InsertViewControllerDelegate!
   
   @IBOutlet weak var pickerViewTipos: UIPickerView!
   var tipoSelecionado = "isaslto_assalto"
@@ -25,11 +25,8 @@ class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerView
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     pickerViewTipos.delegate = self
     pickerViewTipos.dataSource = self
-    
-    // Do any additional setup after loading the view.
   }
   
   func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -42,8 +39,6 @@ class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerView
   
   @IBAction func salvarClick(sender: AnyObject) {
     delegateCreateNewOcurrence?.novaOcorrencia(self, type: tipoSelecionado, title: "(20/10) Teste", description: descricao.text)
-    print("foi+/-")
-    dismissViewControllerAnimated(true, completion: nil)
   }
   
   @IBAction func backClick(sender: AnyObject) {

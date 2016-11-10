@@ -55,9 +55,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         marker.map = mapView
       }
     }
-    if (opened){
-      createMarker(insertController.tipoSelecionado, coordinate: lastSelectedPos, title: "(21/10) Teste", description: insertController.descricao.text);
-    }
   }
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -69,7 +66,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     
     circ.map = mapView
-    generateSamples()
+    //generateSamples()
     
     //let circleCenter = CLLocationCoordinate2D(latitude: 10, longitude: 10)
     //let circ = GMSCircle(position: circleCenter, radius: 1000)
@@ -86,17 +83,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     if segue.identifier == "Insert" {
       let navigationController = segue.destinationViewController as! UINavigationController
       insertController = navigationController.topViewController as! InsertViewController
+      insertController.delegateCreateNewOcurrence = self
       opened = true
     }
   }
   
   
   func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
-    //createMarker("issalto_assalto", coordinate: coordinate, title: "(14/10) Assalto de teste", description: "Descrição: assalto de número \(markers.count)")
-    self.performSegueWithIdentifier("Insert", sender: self)
     lastSelectedPos = coordinate
-    print(coordinate);
-    print(searchedTypes);
+    self.performSegueWithIdentifier("Insert", sender: self)
   }
   
   func createMarker (type: String, coordinate: CLLocationCoordinate2D, title: String, description: String) {
@@ -137,19 +132,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
 //  }
 }
 
-// MARK: - TypesTableViewControllerDelegate
 extension MapViewController: TypesTableViewControllerDelegate {
   func typesController(controller: TypesTableViewController, didSelectTypes types: [String]) {
     searchedTypes = controller.selectedTypes.sort()
     dismissViewControllerAnimated(true, completion: nil)
   }
+  
 }
 
-
-extension MapViewController: CreateNewOcurrence {
+extension MapViewController: InsertViewControllerDelegate {
   func novaOcorrencia(controller: InsertViewController, type: String, title: String, description: String) {
     print("AAAA")
     createMarker(type, coordinate: lastSelectedPos, title: "(21/10) Teste", description: "Descrição: \(description)");
     print("Pimba")
+    dismissViewControllerAnimated(true, completion: nil)
   }
 }
+
+

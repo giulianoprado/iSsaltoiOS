@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		0E9DAE561BDA80A4009DA461 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9DAE551BDA80A4009DA461 /* LaunchScreen.storyboard */; };
 		2D282CE21D8B3B7A00F94B13 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F648D19B22F8700710BEB /* MapViewController.swift */; };
+		2DB6A2121DD4FBAA003FB9A1 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB6A20F1DD4FBAA003FB9A1 /* Alamofire.framework */; };
+		2DB6A2131DD4FBAA003FB9A1 /* Pods_iSsalto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB6A2101DD4FBAA003FB9A1 /* Pods_iSsalto.framework */; };
+		2DB6A2141DD4FBAA003FB9A1 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB6A2111DD4FBAA003FB9A1 /* SwiftyJSON.framework */; };
 		2DD1EC081DB9430D0050D95C /* InsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD1EC071DB9430D0050D95C /* InsertViewController.swift */; };
-		6905E5689DF4C0377F828865 /* Pods_Feed_Me.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0996C093FC17215AE29D05B2 /* Pods_Feed_Me.framework */; };
 		B48F646E19B22EB200710BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F646D19B22EB200710BEB /* AppDelegate.swift */; };
 		B48F647319B22EB200710BEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B48F647119B22EB200710BEB /* Main.storyboard */; };
 		B48F647519B22EB200710BEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B48F647419B22EB200710BEB /* Images.xcassets */; };
@@ -20,7 +22,6 @@
 		B48F649919B22F9B00710BEB /* MarkerInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B48F649619B22F9B00710BEB /* MarkerInfoView.xib */; };
 		B48F649A19B22F9B00710BEB /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F649719B22F9B00710BEB /* UIViewExtension.swift */; };
 		B48F649C19B22FA500710BEB /* TypesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48F649B19B22FA500710BEB /* TypesTableViewController.swift */; };
-		FC9618B48765ADCC5426F769 /* Pods_iSsalto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BDA2E2A849963FDE776BA6 /* Pods_iSsalto.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,9 @@
 		0E9DAE551BDA80A4009DA461 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C8BE6FB27289F1984254DC4 /* Pods-iSsalto.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iSsalto.release.xcconfig"; path = "Pods/Target Support Files/Pods-iSsalto/Pods-iSsalto.release.xcconfig"; sourceTree = "<group>"; };
 		2D5078EF1D8B382A004A6DC5 /* Feed Me-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Feed Me-Bridging-Header.h"; sourceTree = "<group>"; };
+		2DB6A20F1DD4FBAA003FB9A1 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = SOURCE_ROOT; };
+		2DB6A2101DD4FBAA003FB9A1 /* Pods_iSsalto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_iSsalto.framework; path = "Pods/../build/Debug-iphoneos/Pods_iSsalto.framework"; sourceTree = SOURCE_ROOT; };
+		2DB6A2111DD4FBAA003FB9A1 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework"; sourceTree = SOURCE_ROOT; };
 		2DD1EC071DB9430D0050D95C /* InsertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsertViewController.swift; sourceTree = "<group>"; };
 		AB29AABA1D36CC4EAF1EDF07 /* Pods-Feed Me.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Feed Me.release.xcconfig"; path = "Pods/Target Support Files/Pods-Feed Me/Pods-Feed Me.release.xcconfig"; sourceTree = "<group>"; };
 		B48F646819B22EB200710BEB /* iSsalto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iSsalto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,8 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6905E5689DF4C0377F828865 /* Pods_Feed_Me.framework in Frameworks */,
-				FC9618B48765ADCC5426F769 /* Pods_iSsalto.framework in Frameworks */,
+				2DB6A2121DD4FBAA003FB9A1 /* Alamofire.framework in Frameworks */,
+				2DB6A2131DD4FBAA003FB9A1 /* Pods_iSsalto.framework in Frameworks */,
+				2DB6A2141DD4FBAA003FB9A1 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +160,9 @@
 		B48F649D19B231D500710BEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DB6A20F1DD4FBAA003FB9A1 /* Alamofire.framework */,
+				2DB6A2101DD4FBAA003FB9A1 /* Pods_iSsalto.framework */,
+				2DB6A2111DD4FBAA003FB9A1 /* SwiftyJSON.framework */,
 				0996C093FC17215AE29D05B2 /* Pods_Feed_Me.framework */,
 				E1BDA2E2A849963FDE776BA6 /* Pods_iSsalto.framework */,
 			);
@@ -409,6 +417,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SwiftyJSON",
+				);
 				INFOPLIST_FILE = "Feed Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -433,6 +447,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Alamofire",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/SwiftyJSON",
+				);
 				INFOPLIST_FILE = "Feed Me/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
