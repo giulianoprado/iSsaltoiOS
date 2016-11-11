@@ -25,6 +25,8 @@
 */
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
   
@@ -32,6 +34,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   
   @IBOutlet weak var mapCenterPinImage: UIImageView!
   @IBOutlet weak var pinImageVerticalConstraint: NSLayoutConstraint!
+  
+  let numberToNameDictionary = [0:"issalto_assalto", 1:"issalto_roubo", 2:"issalto_carro", 3:"issalto_estupro", 4:"issalto_suspeito"]
+  let nameToNumberDictionary = ["issalto_assalto":0, "issalto_roubo":1, "issalto_carro":2, "issalto_estupro":3, "issalto_suspeito":4]
+  let possibleTypesDictionary = ["issalto_assalto":"Assalto", "issalto_roubo":"Roubo", "issalto_carro":"Roubo de carro", "issalto_estupro":"Estupro", "issalto_suspeito":"Suspeito"]
   var searchedTypes = ["issalto_assalto", "issalto_carro", "issalto_estupro", "issalto_roubo", "issalto_suspeito"]
   
   var markers = [GMSMarker]()
@@ -42,6 +48,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   var opened = false
   
   override func viewDidAppear(animated: Bool) {
+    loadDataOnline()
     for marker in markers {
       var filtered = true
       for element in searchedTypes {
@@ -58,6 +65,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   }
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     mapView.myLocationEnabled = true
     mapView.settings.myLocationButton = true
     mapView.delegate = self
@@ -65,6 +73,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     mapView.camera = GMSCameraPosition.cameraWithLatitude(-22.0058691141315,
       longitude: -47.895916365087, zoom: 16)
+    
     
     
     circ.map = mapView
@@ -96,6 +105,62 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     self.performSegueWithIdentifier("Insert", sender: self)
   }
   
+  func insertMarkOnline (type: String, coordinate: CLLocationCoordinate2D, title: String, description: String) {
+    let request = NSMutableURLRequest(URL: NSURL(string: "http://issalto.herokuapp.com/inserirOcorrencia/")!)
+    request.HTTPMethod = "POST"
+    /* formata a data */
+    let formatter = NSDateFormatter()
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let timestamp = formatter.stringFromDate(NSDate())
+    /* cria a string do post */
+    let postString = "posx=\(coordinate.latitude)&posy=\(coordinate.longitude)&timestamp=\(timestamp)&description=\(description)&type=\(nameToNumberDictionary[type]!)&username=Cassio"
+    print(postString)
+    request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+    let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
+      guard error == nil && data != nil else {                                                          // check for fundamental networking error
+        print("error=\(error)")
+        return
+      }
+      
+      if let httpStatus = response as? NSHTTPURLResponse where httpStatus.statusCode != 200 {           // check for http errors
+        print("statusCode should be 200, but is \(httpStatus.statusCode)")
+        print("response = \(response)")
+      }
+      
+      let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
+      print("responseString = \(responseString)")
+    }
+    task.resume()
+  }
+  var arrRes = [[String:AnyObject]]()
+  func loadDataOnline () {
+    Alamofire.request(.GET, "http://issalto.herokuapp.com/ocorrencias/u=Cassio").responseJSON { (req, res, json) -> Void in
+      if (json.value == nil) {
+        NSLog("Erro ao ler os dados!")
+        return
+      }
+      let swiftyJsonVar = JSON(json.value!)
+      
+      for (_,value):(String,JSON) in swiftyJsonVar {
+        self.createMarker(self.numberToNameDictionary[Int(String(value["type"]))!]!, coordinate: CLLocationCoordinate2D(latitude: Double(String(value["posx"]))!, longitude: Double(String(value["posy"]))!), title: String(value["username"]), description: String(value["description"]))
+      }
+      if let resData = swiftyJsonVar["0"].arrayObject {
+        self.arrRes = resData as! [[String:AnyObject]]
+      }
+      if self.arrRes.count > 0 {
+        for elem in self.arrRes {
+          print(">\(elem)<")
+        }
+      }
+      else
+      {
+        print("VAZIO!!")
+      }
+    }
+  
+  
+  }
+
   func createMarker (type: String, coordinate: CLLocationCoordinate2D, title: String, description: String) {
     let newMarker = GMSMarker(position: coordinate)
     newMarker.title = title
@@ -145,6 +210,7 @@ extension MapViewController: TypesTableViewControllerDelegate {
 extension MapViewController: InsertViewControllerDelegate {
   func novaOcorrencia(controller: InsertViewController, type: String, title: String, description: String) {
     print("AAAA")
+    insertMarkOnline(type, coordinate: lastSelectedPos, title: title, description: "Descrição: \(description)");
     createMarker(type, coordinate: lastSelectedPos, title: title, description: "Descrição: \(description)");
     print("Pimba")
     dismissViewControllerAnimated(true, completion: nil)
