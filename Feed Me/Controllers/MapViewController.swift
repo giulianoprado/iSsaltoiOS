@@ -27,11 +27,13 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import FBSDKLoginKit
+import FBSDKCoreKit
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
   
   @IBOutlet weak var mapView: GMSMapView!
-  
+  @IBOutlet weak var accountButton: UIBarButtonItem!
   @IBOutlet weak var mapCenterPinImage: UIImageView!
   @IBOutlet weak var pinImageVerticalConstraint: NSLayoutConstraint!
   
@@ -62,7 +64,43 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         marker.map = mapView
       }
     }
+    
+    
+    // FACEBOOK:
+    if (FBSDKAccessToken.currentAccessToken() != nil)
+    {
+      // User is already logged in, do work such as go to next view controller.
+      
+      // Or Show Logout Button
+      self.setUserDataOnScreen()
+    }
+    else
+    {
+      self.accountButton.title = "Desconectado"
+    }
+    
   }
+  
+  
+  func setUserDataOnScreen()
+  {
+    let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+    graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+      
+      if ((error) != nil)
+      {
+        // Process error
+        print("Error: \(error)")
+      }
+      else
+      {
+        let userName : NSString = result.valueForKey("name") as! NSString
+        self.accountButton.title = "\(userName)"
+        print(FBSDKAccessToken.currentAccessToken().tokenString)
+      }
+    })
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -101,8 +139,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   
   
   func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
-    lastSelectedPos = coordinate
-    self.performSegueWithIdentifier("Insert", sender: self)
+    if (FBSDKAccessToken.currentAccessToken() != nil) {
+      lastSelectedPos = coordinate
+      self.performSegueWithIdentifier("Insert", sender: self)
+    } else {
+      let alert = UIAlertController(title: "Usuário desconectado!", message: "Clique em conectar para fazer login com o Facebook e criar sua notificação!", preferredStyle: UIAlertControllerStyle.Alert)
+      
+      self.presentViewController(alert, animated: true, completion: nil)
+      alert.addAction(UIAlertAction(title: "Fazer login", style: .Default, handler: { action in
+        self.performSegueWithIdentifier("loginSegue", sender: self)
+      }))
+      alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Cancel, handler: nil))
+    }
   }
   
   func insertMarkOnline (type: String, coordinate: CLLocationCoordinate2D, title: String, description: String) {
@@ -193,11 +241,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
   }
   
+  // FACEBOOK FUNCTIONS
+  
+  
+  
+  
+  
 //  func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
 //    marker.position = coordinate
 //    print(coordinate);
 //  }
 }
+
+
+
+
 
 extension MapViewController: TypesTableViewControllerDelegate {
   func typesController(controller: TypesTableViewController, didSelectTypes types: [String]) {

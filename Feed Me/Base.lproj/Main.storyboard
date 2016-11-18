@@ -41,6 +41,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="6Hq-pz-3QM">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Desconectado" id="GKL-hC-vh1">
+                            <connections>
+                                <segue destination="xhg-VS-aze" kind="show" identifier="loginSegue" id="rrw-HN-7ot"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="filter" id="Y8r-sI-zD8">
                             <connections>
                                 <segue destination="gRK-9k-5jK" kind="presentation" identifier="Types Segue" id="Glz-Sc-CwV"/>
@@ -48,6 +53,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="accountButton" destination="GKL-hC-vh1" id="Aby-f3-xgm"/>
                         <outlet property="mapCenterPinImage" destination="Zk1-KE-lC0" id="Dfo-xZ-1yc"/>
                         <outlet property="mapView" destination="tW3-ch-0Eh" id="Odw-BB-z4C"/>
                         <segue destination="xVb-gC-6LU" kind="presentation" identifier="Insert" id="Fqk-uu-lK3"/>
@@ -105,6 +111,41 @@
             </objects>
             <point key="canvasLocation" x="2495" y="797"/>
         </scene>
+        <!--Facebook Login View Controller-->
+        <scene sceneID="Agp-Q1-Brh">
+            <objects>
+                <viewController id="xhg-VS-aze" customClass="FacebookLoginViewController" customModule="iSsalto" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s9n-xG-j9u"/>
+                        <viewControllerLayoutGuide type="bottom" id="2XJ-3A-Ohc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DS8-8U-Bdr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(info)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OH-4V-glO">
+                                <rect key="frame" x="33" y="93" width="539" height="229"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0OH-4V-glO" firstAttribute="centerX" secondItem="DS8-8U-Bdr" secondAttribute="centerX" id="2oH-rf-X1I"/>
+                            <constraint firstItem="0OH-4V-glO" firstAttribute="top" secondItem="s9n-xG-j9u" secondAttribute="bottom" constant="29" id="861-oA-Lqp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoLabel" destination="0OH-4V-glO" id="1DY-Ev-BN4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l6S-Nq-8Hl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1051" y="87"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UK5-fD-DWn">
             <objects>
@@ -159,7 +200,7 @@
                                 <rect key="frame" x="35" y="109" width="143.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBL-wq-rp4">
@@ -170,14 +211,14 @@
                                 <rect key="frame" x="25" y="456" width="186" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título da ocorrência" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRq-2y-Rrd">
                                 <rect key="frame" x="25" y="375" width="152.5" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTx-1g-Z1T">

@@ -6,5 +6,6 @@ target 'iSsalto' do
 pod 'SwiftyJSON', '~> 2.3.0'
 pod 'GoogleMaps'
 pod 'Alamofire', '~> 2.0.2'
+pod 'FBSDKLoginKit'
 end
 
