@@ -12,6 +12,7 @@ import FBSDKCoreKit
 
 class FacebookLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
+  
   @IBOutlet weak var infoLabel: UILabel!
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)

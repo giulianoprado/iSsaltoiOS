@@ -32,6 +32,27 @@ import FBSDKCoreKit
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
   
+  var loggedEmail: String = "giulianoprado@gmail.com"
+  
+  func updateEmail()
+  {
+    let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"])
+    graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+      
+      if ((error) != nil)
+      {
+        // Process error
+        print("Error: \(error)")
+      }
+      else
+      {
+        self.loggedEmail = String(result.valueForKey("email"))
+      }
+    })
+  }
+  
+  
+  
   @IBOutlet weak var mapView: GMSMapView!
   @IBOutlet weak var accountButton: UIBarButtonItem!
   @IBOutlet weak var mapCenterPinImage: UIImageView!
@@ -50,7 +71,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   var opened = false
   
   override func viewDidAppear(animated: Bool) {
-    loadDataOnline()
+    if (FBSDKAccessToken.currentAccessToken() != nil) {
+      loadDataOnline()
+    } else {
+      let alert = UIAlertController(title: "Usuário desconectado!", message: "Clique em conectar para fazer login com o Facebook e ver as ocorrencias!", preferredStyle: UIAlertControllerStyle.Alert)
+      
+      self.presentViewController(alert, animated: true, completion: nil)
+      alert.addAction(UIAlertAction(title: "Fazer login", style: .Default, handler: { action in
+        self.performSegueWithIdentifier("loginSegue", sender: self)
+      }))
+      alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Cancel, handler: nil))
+
+    }
     for marker in markers {
       var filtered = true
       for element in searchedTypes {
@@ -154,14 +186,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   }
   
   func insertMarkOnline (type: String, coordinate: CLLocationCoordinate2D, title: String, description: String) {
-    let request = NSMutableURLRequest(URL: NSURL(string: "http://issalto.herokuapp.com/inserirOcorrencia/")!)
+    let request = NSMutableURLRequest(URL: NSURL(string: "http://\(FBSDKAccessToken.currentAccessToken().tokenString):unused@issalto.herokuapp.com/inserirOcorrencia/")!)
     request.HTTPMethod = "POST"
     /* formata a data */
     let formatter = NSDateFormatter()
     formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     let timestamp = formatter.stringFromDate(NSDate())
     /* cria a string do post */
-    let postString = "posx=\(coordinate.latitude)&posy=\(coordinate.longitude)&timestamp=\(timestamp)&description=\(description)&type=\(nameToNumberDictionary[type]!)&username=Cassio"
+    let postString = "posx=\(coordinate.latitude)&posy=\(coordinate.longitude)&timestamp=\(timestamp)&description=\(description)&type=\(nameToNumberDictionary[type]!)&email=\(loggedEmail)"
     print(postString)
     request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
     let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { data, response, error in
@@ -182,7 +214,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   }
   var arrRes = [[String:AnyObject]]()
   func loadDataOnline () {
-    Alamofire.request(.GET, "http://issalto.herokuapp.com/ocorrencias/u=Cassio").responseJSON { (req, res, json) -> Void in
+    let stringToRequest = "http://\(FBSDKAccessToken.currentAccessToken().tokenString):unused@issalto.herokuapp.com/ocorrencias/e=\(loggedEmail)"
+    print(stringToRequest)
+    Alamofire.request(.GET, stringToRequest).responseJSON { (req, res, json) -> Void in
+      print(res)
       if (json.value == nil) {
         NSLog("Erro ao ler os dados!")
         return
@@ -190,31 +225,32 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
       let swiftyJsonVar = JSON(json.value!)
       
       for (_,value):(String,JSON) in swiftyJsonVar {
-        self.createMarker(self.numberToNameDictionary[Int(String(value["type"]))!]!, coordinate: CLLocationCoordinate2D(latitude: Double(String(value["posx"]))!, longitude: Double(String(value["posy"]))!), title: String(value["username"]), description: String(value["description"]))
+        self.createMarker(self.numberToNameDictionary[Int(String(value["type"]))!]!, coordinate: CLLocationCoordinate2D(latitude: Double(String(value["posx"]))!, longitude: Double(String(value["posy"]))!), description: String(value["description"]),date: String(value["timestamp"]))
+        print(value["type"])
       }
-      if let resData = swiftyJsonVar["0"].arrayObject {
-        self.arrRes = resData as! [[String:AnyObject]]
-      }
-      if self.arrRes.count > 0 {
-        for elem in self.arrRes {
-          print(">\(elem)<")
-        }
-      }
-      else
-      {
-        print("VAZIO!!")
-      }
+//      if let resData = swiftyJsonVar["0"].arrayObject {
+//        self.arrRes = resData as! [[String:AnyObject]]
+//      }
+//      if self.arrRes.count > 0 {
+//        for elem in self.arrRes {
+//          print(">\(elem)<")
+//        }
+//      }
+//      else
+//      {
+//        print("VAZIO!!")
+//      }
     }
-  
+    
   
   }
 
-  func createMarker (type: String, coordinate: CLLocationCoordinate2D, title: String, description: String) {
+  func createMarker (type: String, coordinate: CLLocationCoordinate2D, description: String, date: String) {
     let newMarker = GMSMarker(position: coordinate)
-    newMarker.title = title
+    newMarker.title = possibleTypesDictionary[type]
     newMarker.icon = UIImage(named: type)
     newMarker.map = mapView
-    newMarker.snippet = description
+    newMarker.snippet = "\(date)\n\(description)"
     newMarker.appearAnimation = kGMSMarkerAnimationPop
     markers.append(newMarker)
   }
@@ -231,19 +267,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   }
   
   
-  func generateSamples() {
-    createMarker("issalto_assalto", coordinate: CLLocationCoordinate2D(latitude: -22.0058691141315, longitude: -47.895916365087), title: "(12/10) Assalto a mão armada", description: "Descrição: estava saindo da faculdade, quando fui abordado por dois homens negros, de estatura baixa, armados, que levaram meu celular");
-    createMarker("issalto_carro", coordinate: CLLocationCoordinate2D(latitude: -22.0036546032568, longitude: -47.8962184488773), title: "(11/10) Roubo de carro", description: "Descrição: deixei o carro parado na rua. Quando voltei, o som e o vidro não estavam mais lá");
-    createMarker("issalto_roubo", coordinate: CLLocationCoordinate2D(latitude: -22.0025852594009, longitude: -47.8984289243817), title: "(11/10) Roubo de carro", description: "Descrição: enfiaram a mão no meu bolso e levaram meu celular! Não vi nem o ladrão!");
-    createMarker("issalto_estupro", coordinate: CLLocationCoordinate2D(latitude: -22.0114509330969, longitude: -47.8973258659244), title: "(10/10) Estupro", description: "Descrição: estava saindo de uma festa, quando fui abordado por dois homens, que me puxaram para o canto e abusaram de mim");
-    createMarker("issalto_suspeito", coordinate: CLLocationCoordinate2D(latitude: -22.0104689940198, longitude: -47.8982639685273), title: "(11/10) Suspeito", description: "Descrição: há um homem estranho parado na rua! Tomem cuidado!");
-    createMarker("issalto_assalto", coordinate: CLLocationCoordinate2D(latitude: -22.011464609946, longitude: -47.895961292088), title: "Assalto a mão armada", description: "Descrição: fui assaltado por um homem com uma faca");
-    
-  }
-  
-  // FACEBOOK FUNCTIONS
-  
-  
+//  func generateSamples() {
+//    createMarker("issalto_assalto", coordinate: CLLocationCoordinate2D(latitude: -22.0058691141315, longitude: -47.895916365087), title: "(12/10) Assalto a mão armada", description: "Descrição: estava saindo da faculdade, quando fui abordado por dois homens negros, de estatura baixa, armados, que levaram meu celular");
+//    createMarker("issalto_carro", coordinate: CLLocationCoordinate2D(latitude: -22.0036546032568, longitude: -47.8962184488773), title: "(11/10) Roubo de carro", description: "Descrição: deixei o carro parado na rua. Quando voltei, o som e o vidro não estavam mais lá");
+//    createMarker("issalto_roubo", coordinate: CLLocationCoordinate2D(latitude: -22.0025852594009, longitude: -47.8984289243817), title: "(11/10) Roubo de carro", description: "Descrição: enfiaram a mão no meu bolso e levaram meu celular! Não vi nem o ladrão!");
+//    createMarker("issalto_estupro", coordinate: CLLocationCoordinate2D(latitude: -22.0114509330969, longitude: -47.8973258659244), title: "(10/10) Estupro", description: "Descrição: estava saindo de uma festa, quando fui abordado por dois homens, que me puxaram para o canto e abusaram de mim");
+//    createMarker("issalto_suspeito", coordinate: CLLocationCoordinate2D(latitude: -22.0104689940198, longitude: -47.8982639685273), title: "(11/10) Suspeito", description: "Descrição: há um homem estranho parado na rua! Tomem cuidado!");
+//    createMarker("issalto_assalto", coordinate: CLLocationCoordinate2D(latitude: -22.011464609946, longitude: -47.895961292088), title: "Assalto a mão armada", description: "Descrição: fui assaltado por um homem com uma faca");
+//    
+//  }
   
   
   
@@ -269,7 +301,7 @@ extension MapViewController: InsertViewControllerDelegate {
   func novaOcorrencia(controller: InsertViewController, type: String, title: String, description: String) {
     print("AAAA")
     insertMarkOnline(type, coordinate: lastSelectedPos, title: title, description: "Descrição: \(description)");
-    createMarker(type, coordinate: lastSelectedPos, title: title, description: "Descrição: \(description)");
+    //createMarker(type, coordinate: lastSelectedPos, description: "Descrição: \(description)");
     print("Pimba")
     dismissViewControllerAnimated(true, completion: nil)
   }
