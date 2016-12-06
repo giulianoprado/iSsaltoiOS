@@ -73,15 +73,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   override func viewDidAppear(animated: Bool) {
     if (FBSDKAccessToken.currentAccessToken() != nil) {
       loadDataOnline()
-    } else {
-      let alert = UIAlertController(title: "Usuário desconectado!", message: "Clique em conectar para fazer login com o Facebook e ver as ocorrencias!", preferredStyle: UIAlertControllerStyle.Alert)
-      
-      self.presentViewController(alert, animated: true, completion: nil)
-      alert.addAction(UIAlertAction(title: "Fazer login", style: .Default, handler: { action in
-        self.performSegueWithIdentifier("loginSegue", sender: self)
-      }))
-      alert.addAction(UIAlertAction(title: "Cancelar", style: UIAlertActionStyle.Cancel, handler: nil))
-
     }
     for marker in markers {
       var filtered = true
@@ -171,8 +162,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
   
   
   func mapView(mapView: GMSMapView, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
+    lastSelectedPos = coordinate
     if (FBSDKAccessToken.currentAccessToken() != nil) {
-      lastSelectedPos = coordinate
       self.performSegueWithIdentifier("Insert", sender: self)
     } else {
       let alert = UIAlertController(title: "Usuário desconectado!", message: "Clique em conectar para fazer login com o Facebook e criar sua notificação!", preferredStyle: UIAlertControllerStyle.Alert)
@@ -185,7 +176,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
   }
   
-  func insertMarkOnline (type: String, coordinate: CLLocationCoordinate2D, title: String, description: String) {
+  func insertMarkOnline (type: String, coordinate: CLLocationCoordinate2D, description: String) {
     let request = NSMutableURLRequest(URL: NSURL(string: "http://\(FBSDKAccessToken.currentAccessToken().tokenString):unused@issalto.herokuapp.com/inserirOcorrencia/")!)
     request.HTTPMethod = "POST"
     /* formata a data */
@@ -212,9 +203,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     task.resume()
   }
+  
   var arrRes = [[String:AnyObject]]()
+  
+  
+  
   func loadDataOnline () {
-    let stringToRequest = "http://\(FBSDKAccessToken.currentAccessToken().tokenString):unused@issalto.herokuapp.com/ocorrencias/e=\(loggedEmail)"
+    let stringToRequest = "http://issalto.herokuapp.com/ocorrencias/x=\(lastSelectedPos.latitude)&y=\(lastSelectedPos.longitude)&r=100"
     print(stringToRequest)
     Alamofire.request(.GET, stringToRequest).responseJSON { (req, res, json) -> Void in
       print(res)
@@ -298,9 +293,9 @@ extension MapViewController: TypesTableViewControllerDelegate {
 }
 
 extension MapViewController: InsertViewControllerDelegate {
-  func novaOcorrencia(controller: InsertViewController, type: String, title: String, description: String) {
+  func novaOcorrencia(controller: InsertViewController, type: String, description: String) {
     print("AAAA")
-    insertMarkOnline(type, coordinate: lastSelectedPos, title: title, description: "Descrição: \(description)");
+    insertMarkOnline(type, coordinate: lastSelectedPos, description: "Descrição: \(description)");
     //createMarker(type, coordinate: lastSelectedPos, description: "Descrição: \(description)");
     print("Pimba")
     dismissViewControllerAnimated(true, completion: nil)

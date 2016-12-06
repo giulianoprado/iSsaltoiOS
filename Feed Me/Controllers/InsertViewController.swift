@@ -9,7 +9,7 @@
 import UIKit
 
 protocol InsertViewControllerDelegate: class {
-  func novaOcorrencia(controller: InsertViewController, type: String, title: String, description: String)
+  func novaOcorrencia(controller: InsertViewController, type: String, description: String)
 }
 
 class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -18,7 +18,6 @@ class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerView
   
   
   @IBOutlet weak var descricao: UITextField!
-  @IBOutlet weak var titulo: UITextField!
   
   weak var delegateCreateNewOcurrence: InsertViewControllerDelegate!
   
@@ -42,7 +41,7 @@ class InsertViewController: UIViewController, UIPickerViewDelegate, UIPickerView
   }
   
   @IBAction func salvarClick(sender: AnyObject) {
-    delegateCreateNewOcurrence?.novaOcorrencia(self, type: tipoSelecionado, title: "(11/11) \(titulo.text!)", description: descricao.text!)
+    delegateCreateNewOcurrence?.novaOcorrencia(self, type: tipoSelecionado, description: descricao.text!)
   }
   
   @IBAction func backClick(sender: AnyObject) {

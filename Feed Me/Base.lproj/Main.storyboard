@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jle-iB-eqV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jle-iB-eqV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -144,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l6S-Nq-8Hl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1051" y="87"/>
+            <point key="canvasLocation" x="1287" y="39"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UK5-fD-DWn">
@@ -182,7 +182,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJS-SY-vcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1683" y="797"/>
+            <point key="canvasLocation" x="1763" y="785"/>
         </scene>
         <!--Insert-->
         <scene sceneID="t5n-6B-qZp">
@@ -208,27 +208,14 @@
                                 <animations/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descrição da ocorrência" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGp-op-ClO">
-                                <rect key="frame" x="25" y="456" width="186" height="20.5"/>
+                                <rect key="frame" x="40" y="363" width="186" height="20.5"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título da ocorrência" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRq-2y-Rrd">
-                                <rect key="frame" x="25" y="375" width="152.5" height="20.5"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Título" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dTx-1g-Z1T">
-                                <rect key="frame" x="43" y="411" width="514" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Descrição" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gw7-nt-zSQ">
-                                <rect key="frame" x="40" y="491" width="520" height="30"/>
+                                <rect key="frame" x="40" y="398.5" width="520" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -237,19 +224,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hGp-op-ClO" firstAttribute="top" secondItem="FBL-wq-rp4" secondAttribute="bottom" constant="3" id="0QV-Aa-lUE"/>
                             <constraint firstItem="xzV-bW-eRn" firstAttribute="top" secondItem="rrS-rt-KyQ" secondAttribute="bottom" constant="15" id="7BV-Kr-jhh"/>
-                            <constraint firstItem="dTx-1g-Z1T" firstAttribute="top" secondItem="xRq-2y-Rrd" secondAttribute="bottom" constant="15" id="955-gS-KM9"/>
                             <constraint firstItem="FBL-wq-rp4" firstAttribute="leading" secondItem="zzZ-6E-Jmp" secondAttribute="leadingMargin" constant="15" id="CUx-Rj-zB1"/>
-                            <constraint firstItem="hGp-op-ClO" firstAttribute="top" secondItem="dTx-1g-Z1T" secondAttribute="bottom" constant="15" id="HYR-sP-MYx"/>
                             <constraint firstItem="Gw7-nt-zSQ" firstAttribute="centerX" secondItem="zzZ-6E-Jmp" secondAttribute="centerX" id="J5d-pg-U0g"/>
                             <constraint firstItem="FBL-wq-rp4" firstAttribute="top" secondItem="xzV-bW-eRn" secondAttribute="bottom" constant="15" id="MqD-bk-TX4"/>
-                            <constraint firstItem="hGp-op-ClO" firstAttribute="leading" secondItem="zzZ-6E-Jmp" secondAttribute="leadingMargin" constant="5" id="Vr7-xn-Iym"/>
-                            <constraint firstItem="xRq-2y-Rrd" firstAttribute="leading" secondItem="zzZ-6E-Jmp" secondAttribute="leadingMargin" constant="5" id="Wg0-sx-7ju"/>
-                            <constraint firstItem="dTx-1g-Z1T" firstAttribute="centerX" secondItem="zzZ-6E-Jmp" secondAttribute="centerX" id="X1S-2q-yB4"/>
-                            <constraint firstItem="dTx-1g-Z1T" firstAttribute="leading" secondItem="zzZ-6E-Jmp" secondAttribute="leadingMargin" constant="23" id="XBi-dz-d9I"/>
+                            <constraint firstItem="hGp-op-ClO" firstAttribute="leading" secondItem="zzZ-6E-Jmp" secondAttribute="leadingMargin" constant="20" id="R5E-HT-l3O"/>
                             <constraint firstItem="FBL-wq-rp4" firstAttribute="centerX" secondItem="zzZ-6E-Jmp" secondAttribute="centerX" id="c85-Tu-IdB"/>
                             <constraint firstItem="Gw7-nt-zSQ" firstAttribute="leading" secondItem="zzZ-6E-Jmp" secondAttribute="leadingMargin" constant="20" id="cde-f1-xy7"/>
-                            <constraint firstItem="xRq-2y-Rrd" firstAttribute="top" secondItem="FBL-wq-rp4" secondAttribute="bottom" constant="15" id="jnS-eE-Meo"/>
                             <constraint firstItem="xzV-bW-eRn" firstAttribute="leading" secondItem="zzZ-6E-Jmp" secondAttribute="leadingMargin" constant="15" id="oHv-Jz-Lhe"/>
                             <constraint firstItem="Gw7-nt-zSQ" firstAttribute="top" secondItem="hGp-op-ClO" secondAttribute="bottom" constant="15" id="wgA-yo-7eN"/>
                         </constraints>
@@ -270,7 +252,6 @@
                     <connections>
                         <outlet property="descricao" destination="Gw7-nt-zSQ" id="3D6-5q-Mvj"/>
                         <outlet property="pickerViewTipos" destination="FBL-wq-rp4" id="TUb-LZ-Tuy"/>
-                        <outlet property="titulo" destination="dTx-1g-Z1T" id="bAN-3E-mbT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lk7-1y-7Qx" userLabel="First Responder" sceneMemberID="firstResponder"/>
