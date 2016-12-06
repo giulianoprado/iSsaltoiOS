@@ -1,27 +1,8 @@
-//
-//  MapViewController.swift
-//  Feed Me
-//
 /*
-* Copyright (c) 2015 Razeware LLC
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
+  iSsalto - v1.0
+  Giuliano Barbosa Prado
+  Henrique de Almeida Machado da Silveira
+  Marcelo de Paula Ferreira Costa
 */
 
 import UIKit
@@ -223,18 +204,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.createMarker(self.numberToNameDictionary[Int(String(value["type"]))!]!, coordinate: CLLocationCoordinate2D(latitude: Double(String(value["posx"]))!, longitude: Double(String(value["posy"]))!), description: String(value["description"]),date: String(value["timestamp"]))
         print(value["type"])
       }
-//      if let resData = swiftyJsonVar["0"].arrayObject {
-//        self.arrRes = resData as! [[String:AnyObject]]
-//      }
-//      if self.arrRes.count > 0 {
-//        for elem in self.arrRes {
-//          print(">\(elem)<")
-//        }
-//      }
-//      else
-//      {
-//        print("VAZIO!!")
-//      }
     }
     
   

@@ -1,10 +1,9 @@
-//
-//  FacebookLoginViewController.swift
-//  iSsalto
-//
-//  Created by Giuliano Barbosa Prado on 17/11/16.
-//  Copyright © 2016 Ron Kliffer. All rights reserved.
-//
+/*
+  iSsalto - v1.0
+  Giuliano Barbosa Prado
+  Henrique de Almeida Machado da Silveira
+  Marcelo de Paula Ferreira Costa
+*/
 
 import UIKit
 import FBSDKLoginKit
@@ -18,11 +17,10 @@ class FacebookLoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     super.viewDidAppear(animated)
     // Do any additional setup after loading the view, typically from a nib.
     
+    // Logar e obter dados
     if (FBSDKAccessToken.currentAccessToken() != nil)
     {
-      // User is already logged in, do work such as go to next view controller.
       
-      // Or Show Logout Button
       let loginView : FBSDKLoginButton = FBSDKLoginButton()
       self.view.addSubview(loginView)
       loginView.center = self.view.center

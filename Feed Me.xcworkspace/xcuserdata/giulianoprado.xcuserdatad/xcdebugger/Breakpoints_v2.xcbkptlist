@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed Me/Controllers/MapViewController.swift"
-            timestampString = "502661582.757781"
+            timestampString = "502679466.453089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "5">
             <Locations>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed Me/Controllers/MapViewController.swift"
-            timestampString = "502661582.757781"
+            timestampString = "502679466.453089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed Me/Controllers/MapViewController.swift"
-            timestampString = "502661582.757781"
+            timestampString = "502679466.453089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed Me/Controllers/MapViewController.swift"
-            timestampString = "502661703.768875"
+            timestampString = "502679466.453089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "loadDataOnline()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed Me/Controllers/MapViewController.swift"
-            timestampString = "502661703.768875"
+            timestampString = "502679466.453089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "loadDataOnline()"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,13 +122,74 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Feed Me/Controllers/MapViewController.swift"
-            timestampString = "502661703.768875"
+            timestampString = "502679466.453089"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "createMarker(_:coordinate:description:date:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Feed Me/Controllers/FacebookLoginViewController.swift"
+            timestampString = "502679377.230742"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "2"
+            endingLineNumber = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iSsalto.FacebookLoginViewController.__deallocating_deinit"
+                  moduleName = "iSsalto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giulianoprado/Meus%20aplicativos/CD/Feed%20Me%20Starter/Feed%20Me/Controllers/FacebookLoginViewController.swift"
+                  timestampString = "502679377.294131"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iSsalto.FacebookLoginViewController.init (iSsalto.FacebookLoginViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; iSsalto.FacebookLoginViewController"
+                  moduleName = "iSsalto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giulianoprado/Meus%20aplicativos/CD/Feed%20Me%20Starter/Feed%20Me/Controllers/FacebookLoginViewController.swift"
+                  timestampString = "502679377.29458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "58">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iSsalto.FacebookLoginViewController.init (iSsalto.FacebookLoginViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;iSsalto.FacebookLoginViewController&gt;"
+                  moduleName = "iSsalto"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/giulianoprado/Meus%20aplicativos/CD/Feed%20Me%20Starter/Feed%20Me/Controllers/FacebookLoginViewController.swift"
+                  timestampString = "502679377.294815"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -1,10 +1,9 @@
-//
-//  InsertViewController.swift
-//  iSsalto
-//
-//  Created by Giuliano Barbosa Prado on 20/10/16.
-//  Copyright © 2016 Ron Kliffer. All rights reserved.
-//
+/*
+  iSsalto - v1.0
+  Giuliano Barbosa Prado
+  Henrique de Almeida Machado da Silveira
+  Marcelo de Paula Ferreira Costa
+*/
 
 import UIKit
 

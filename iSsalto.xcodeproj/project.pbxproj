@@ -74,8 +74,8 @@
 		B48F645F19B22EB200710BEB = {
 			isa = PBXGroup;
 			children = (
-				B48F646A19B22EB200710BEB /* Feed Me */,
-				B48F647D19B22EB200710BEB /* Feed MeTests */,
+				B48F646A19B22EB200710BEB /* iSsalto */,
+				B48F647D19B22EB200710BEB /* iSsaltoTests */,
 				B48F646919B22EB200710BEB /* Products */,
 				B48F649D19B231D500710BEB /* Frameworks */,
 				DF370281B39844A7558B2745 /* Pods */,
@@ -92,7 +92,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B48F646A19B22EB200710BEB /* Feed Me */ = {
+		B48F646A19B22EB200710BEB /* iSsalto */ = {
 			isa = PBXGroup;
 			children = (
 				B48F646D19B22EB200710BEB /* AppDelegate.swift */,
@@ -104,6 +104,7 @@
 				B48F647419B22EB200710BEB /* Images.xcassets */,
 				B48F646B19B22EB200710BEB /* Supporting Files */,
 			);
+			name = iSsalto;
 			path = "Feed Me";
 			sourceTree = "<group>";
 		};
@@ -115,12 +116,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B48F647D19B22EB200710BEB /* Feed MeTests */ = {
+		B48F647D19B22EB200710BEB /* iSsaltoTests */ = {
 			isa = PBXGroup;
 			children = (
 				B48F648019B22EB200710BEB /* Feed_MeTests.swift */,
 				B48F647E19B22EB200710BEB /* Supporting Files */,
 			);
+			name = iSsaltoTests;
 			path = "Feed MeTests";
 			sourceTree = "<group>";
 		};
