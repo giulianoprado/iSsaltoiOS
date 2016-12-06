@@ -244,7 +244,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     let newMarker = GMSMarker(position: coordinate)
     newMarker.title = possibleTypesDictionary[type]
     newMarker.icon = UIImage(named: type)
-    newMarker.map = mapView
+    newMarker.map = nil
+    for element in searchedTypes {
+      print("[\(type),\(element)]")
+      if type==element {
+        newMarker.map = mapView
+      }
+    }
     newMarker.snippet = "\(date)\n\(description)"
     newMarker.appearAnimation = kGMSMarkerAnimationPop
     markers.append(newMarker)

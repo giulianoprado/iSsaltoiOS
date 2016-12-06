@@ -63,7 +63,7 @@
             </objects>
             <point key="canvasLocation" x="1025" y="797"/>
         </scene>
-        <!--Choose Types-->
+        <!--Selecione as ocorrências visíveis-->
         <scene sceneID="gir-OY-7YJ">
             <objects>
                 <tableViewController id="2fR-e7-j51" customClass="TypesTableViewController" customModule="iSsalto" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,8 +99,8 @@
                             <outlet property="delegate" destination="2fR-e7-j51" id="d4P-vr-ye3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Choose Types" id="gqC-5E-R1t">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="99H-eU-i0O">
+                    <navigationItem key="navigationItem" title="Selecione as ocorrências visíveis" id="gqC-5E-R1t">
+                        <barButtonItem key="rightBarButtonItem" title="OK" id="99H-eU-i0O">
                             <connections>
                                 <action selector="donePressed:" destination="2fR-e7-j51" id="0p9-a4-O5u"/>
                             </connections>
